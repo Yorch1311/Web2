@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="container-fluid">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a router-link="/inicio" routerLinkActive="active" class="nav-link">ABC Producto</a>
+            </li>
+            <li class="nav-item">
+                <a router-link="/carrito" routerLinkActive="active" class="nav-link">Ganancias</a>
+            </li>
+            <li class="nav-item">
+                <a router-link="/cuenta" routerLinkActive="active" class="nav-link">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a router-link="/cuenta" routerLinkActive="active" class="nav-link">Ventas pendientes</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div>
+    <form clrForm>
+
+        <h1>ABC Productos</h1>
+        
+        
+            <label>Nombre</label>
+            <input type="text" pInputText />
+        
+            <br>
+        
+            <label>Descripcion</label>
+            <input type="text" pInputText />
+        
+            <br>
+        
+            <label>Cantidad</label>
+            <input type="text" pInputText />
+        
+            <br>
+        
+            <label>Imagen</label>
+            <input type="text" pInputText />
+        
+            <br>
+        
+            <label>Precio</label>
+            <input type="text" pInputText />
+        
+    
+        <br>
+        <button pButton type="button" label="Alta" ></button>
+        <button pButton type="button" label="Baja" ></button>
+        <button pButton type="button" label="Cambio" ></button>
+        <button pButton type="button" label="Cancelar" ></button>
+<!--
+        <button class="btn btn-primary" type="submit">Alta</button>
+        <button class="btn btn-primary" type="submit">Baja</button>
+        <button class="btn btn-primary" type="submit">Cambio</button>
+        <button class="btn btn-primary" type="submit">Cancelar</button>-->
+    </form>
+</div>
+

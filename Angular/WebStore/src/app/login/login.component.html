@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="container-fluid">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a router-link="/login" routerLinkActive="active" class="nav-link">Inicio de Sesion</a>
+            </li>
+            <li class="nav-item">
+                <a router-link="/registro" routerLinkActive="active" class="nav-link">Registrarse</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<form clrForm>
+
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="usuario">Usuario</label>
+            <input id="usuario" type="text" pInputText>
+        </div>
+        <div class="p-field">
+            <label for="contraseña">Contraseña</label>
+            <input id="contraseña" type="text" pInputText>
+        </div>
+    </div>
+<!--
+    <label>Usuario</label>
+    <input type="text" pInputText />
+
+    <br>
+
+    <label>Contraseña</label>
+    <input type="text" pInputText />
+
+
+    <br>-->
+
+    <button pButton type="button" label="Ingresar" id="ingresar"></button>
+</form>

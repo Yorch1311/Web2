@@ -1,0 +1,128 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="container-fluid">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a router-link="/inicio" routerLinkActive="active" class="nav-link">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a router-link="/carrito" routerLinkActive="active" class="nav-link">Carrito</a>
+            </li>
+            <li class="nav-item">
+                <a router-link="/cuenta" routerLinkActive="active" class="nav-link">Cuenta</a>
+            </li>
+            <li class="nav-item">
+                <a router-link="/logout" routerLinkActive="active" class="nav-link">Cerrar sesion</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="products">
+
+    <div class="titulo">
+        <h2>Imagen</h2>
+        <h2>Producto</h2>
+        <h2>Total</h2>
+        <h2>Cantidad</h2>
+        <h2></h2>
+    </div>
+
+    <div class="item-product">
+
+        <img src="https://placekitten.com/60/60" alt="Producto">
+
+        <p>Producto 1</p>
+
+        <p>$ 200.00</p>
+
+        <input type="number" max="100" min="0" size="4">
+
+        <button>Cerrar</button>
+    </div>
+    <div class="item-product">
+
+        <img src="https://placekitten.com/60/60" alt="Producto">
+
+        <p>Producto 1</p>
+
+        <p>$ 200.00</p>
+
+        <input type="number" max="100" min="0" size="4">
+
+        <button>Cerrar</button>
+    </div>
+    <div class="item-product">
+
+        <img src="https://placekitten.com/60/60" alt="Producto">
+
+        <p>Producto 1</p>
+
+        <p>$ 200.00</p>
+
+        <input type="number" max="100" min="0" size="4">
+
+        <button>Cerrar</button>
+    </div>
+    <div class="item-product">
+
+        <img src="https://placekitten.com/60/60" alt="Producto">
+
+        <p>Producto 1</p>
+
+        <p>$ 200.00</p>
+
+        <input type="number" max="100" min="0" size="4">
+
+        <button>Cerrar</button>
+    </div>
+    <div class="item-product">
+
+        <img src="https://placekitten.com/60/60" alt="Producto">
+
+        <p>Producto 1</p>
+
+        <p>$ 200.00</p>
+
+        <input type="number" max="100" min="0" size="4">
+
+        <button>Cerrar</button>
+    </div>
+    <div class="item-product">
+
+        <img src="https://placekitten.com/60/60" alt="Producto">
+
+        <p>Producto 1</p>
+
+        <p>$ 200.00</p>
+
+        <input type="number" max="100" min="0" size="4">
+
+        <button>Cerrar</button>
+    </div>
+
+    <button pButton type="button" label="Comprar" ></button>
+</div>
+
+<div>
+    <h1>Compra</h1>
+
+    <form>
+        <label for="">Tipoo de pago</label>
+        <select name="" id="">
+            <option value="contado">Contado</option>
+            <option value="credito">Credito</option>
+            <option value="efectivo">Efectivo</option>
+        </select>
+
+        <br>
+        <label>No. Tarjeta</label>
+        <input type="text" pInputText />
+        <br>
+        <label>Clave trasera</label>
+        <input type="text" pInputText />
+
+
+        <br>
+        <button pButton type="button" label="Pagar" ></button>
+    </form>
+</div>

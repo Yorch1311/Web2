@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="container-fluid">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a router-link="/inicio" routerLinkActive="active" class="nav-link">ABC Producto</a>
+            </li>
+            <li class="nav-item">
+                <a router-link="/carrito" routerLinkActive="active" class="nav-link">Ganancias</a>
+            </li>
+            <li class="nav-item">
+                <a router-link="/cuenta" routerLinkActive="active" class="nav-link">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a router-link="/cuenta" routerLinkActive="active" class="nav-link">Ventas pendientes</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div>
+    <h2>Ganancias por las ventas</h2>
+
+    <label for="">Tpo de grafica</label>
+    <select name="" id="">
+        <option value="mes">mes</option>
+        <option value="año">año</option>
+    </select>
+    <br>
+    <label for="">Año</label>
+    <input type="number" min="2000" max="2021">
+    <br>
+
+    <label for="Mes">Mes</label>
+    <select name="" id="">
+        <option value="ene">ene</option>
+        <option value="feb">feb</option>
+        <option value="mar">mar</option>
+        <option value="abr">abr</option>
+        <option value="may">may</option>
+        <option value="jun">jun</option>
+        <option value="jul">jul</option>
+        <option value="ago">ago</option>
+        <option value="sep">sep</option>
+        <option value="oct">oct</option>
+        <option value="nov">nov</option>
+        <option value="dic">dic</option>
+    </select>
+    <br>
+
+    <button pButton type="button" label="Generar grafica" ></button>
+
+    <img src="./diagrama-barras.jpg" alt="foto" width="200px">
+</div>
