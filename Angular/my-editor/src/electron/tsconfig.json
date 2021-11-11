@@ -1,0 +1,9 @@
+{
+    "extends": "../../tconfig.json",
+    "compilerOptions": {
+        "importHelpers": false
+    },
+    "include": [
+        "**/*.ts"
+    ]
+}
