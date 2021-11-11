@@ -100,29 +100,31 @@
         <button>Cerrar</button>
     </div>
 
-    <button pButton type="button" label="Comprar" ></button>
+    <button pButton type="button" label="Comprar"></button>
 </div>
 
 <div>
-    <h1>Compra</h1>
-
     <form>
-        <label for="">Tipoo de pago</label>
-        <select name="" id="">
-            <option value="contado">Contado</option>
-            <option value="credito">Credito</option>
-            <option value="efectivo">Efectivo</option>
-        </select>
-
+        <h1>Compra</h1>
+        <div class="p-fluid">
+            <div class="p-field">
+                <label for="">Tipoo de pago</label>
+                <select name="" id="">
+                    <option value="contado">Contado</option>
+                    <option value="credito">Credito</option>
+                    <option value="efectivo">Efectivo</option>
+                </select>
+            </div>
+            <div class="p-field">
+                <label>No. Tarjeta</label>
+                <input type="text" pInputText />
+            </div>
+            <div class="p-field">
+                <label>Clave trasera</label>
+                <input type="text" pInputText />
+            </div>
+        </div>
         <br>
-        <label>No. Tarjeta</label>
-        <input type="text" pInputText />
-        <br>
-        <label>Clave trasera</label>
-        <input type="text" pInputText />
-
-
-        <br>
-        <button pButton type="button" label="Pagar" ></button>
+        <button pButton type="button" label="Pagar"></button>
     </form>
 </div>

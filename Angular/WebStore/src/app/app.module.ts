@@ -19,6 +19,10 @@ import { VentaPendienteComponent } from './venta-pendiente/venta-pendiente.compo
 
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
+import {InputNumberModule} from 'primeng/inputnumber';
+
+import {MenubarModule} from 'primeng/menubar';
+import {MenuItem} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,9 @@ import {InputTextModule} from 'primeng/inputtext';
     ClarityModule,
     BrowserAnimationsModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    InputNumberModule,
+    MenubarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

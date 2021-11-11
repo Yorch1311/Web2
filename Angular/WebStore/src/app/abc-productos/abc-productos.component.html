@@ -19,44 +19,35 @@
 
 <div>
     <form clrForm>
-
         <h1>ABC Productos</h1>
-        
-        
-            <label>Nombre</label>
-            <input type="text" pInputText />
-        
-            <br>
-        
-            <label>Descripcion</label>
-            <input type="text" pInputText />
-        
-            <br>
-        
-            <label>Cantidad</label>
-            <input type="text" pInputText />
-        
-            <br>
-        
-            <label>Imagen</label>
-            <input type="text" pInputText />
-        
-            <br>
-        
-            <label>Precio</label>
-            <input type="text" pInputText />
-        
-    
+        <div class="p-fluid">
+            <div class="p-field">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" pInputText>
+            </div>
+            <div class="p-field">
+                <label for="descripcion">Descripcion</label>
+                <input id="descripcion" type="text" pInputText>
+            </div>
+            <div class="p-field">
+                <label for="cantidad">Cantidad</label>
+                <p-inputNumber [showButtons]="true" [min]="1" [max]="200" [maxlength]="3" [size]="4" id="cantidad"  mode="decimal"></p-inputNumber>
+            </div>
+            <div class="p-field">
+                <label for="precio">Precio</label>
+                <p-inputNumber id="precio" [min]="1" [max]="10000" [maxlength]="12" mode="currency" currency="MXN" locale="en-US"></p-inputNumber>
+            </div>
+        </div>
+
         <br>
-        <button pButton type="button" label="Alta" ></button>
-        <button pButton type="button" label="Baja" ></button>
-        <button pButton type="button" label="Cambio" ></button>
-        <button pButton type="button" label="Cancelar" ></button>
-<!--
+        <button pButton type="button" label="Alta"></button>
+        <button pButton type="button" label="Baja"></button>
+        <button pButton type="button" label="Cambio"></button>
+        <button pButton type="button" label="Cancelar"></button>
+        <!--
         <button class="btn btn-primary" type="submit">Alta</button>
         <button class="btn btn-primary" type="submit">Baja</button>
         <button class="btn btn-primary" type="submit">Cambio</button>
         <button class="btn btn-primary" type="submit">Cancelar</button>-->
     </form>
 </div>
-
