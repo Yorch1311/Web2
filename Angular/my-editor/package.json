@@ -6,14 +6,15 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:desktop": "concurrently \"ng build --delete-output-path=false --watch\" \"webpack --watch\""
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.0.0",
-    "@angular/common": "^12.0.3",
+    "@angular/common": "^13.0.1",
     "@angular/compiler": "~13.0.0",
-    "@angular/core": "^12.0.3",
+    "@angular/core": "^13.0.1",
     "@angular/forms": "^13.0.1",
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
@@ -31,6 +32,7 @@
     "@angular/compiler-cli": "~13.0.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "concurrently": "^6.3.0",
     "electron": "^15.3.1",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",

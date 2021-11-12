@@ -1,5 +1,5 @@
 {
-    "extends": "../../tconfig.json",
+    "extends": "../../tsconfig.json",
     "compilerOptions": {
         "importHelpers": false
     },
