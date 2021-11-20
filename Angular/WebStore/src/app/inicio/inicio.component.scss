@@ -1,13 +1,30 @@
-.item-product {
-    width: 23%;
+.datos{
     background-color: darkseagreen;
-    display: inline-block;
-    margin: 1%;
+    width: 100%;
+}
+
+.container {
+  margin: 10px 0;
+  display: inline-block;
+
 }
 
 .products {
     margin: 0 auto;
-    width: 85%;
-
+    width: 96%;
     align-items: center;
+}
+
+.nav-item {
+  margin: 0 5px;
+}
+
+.img-prod {
+  padding-top: 10px;
+  margin: 0px auto;
+  display: block;
+}
+
+.cantidad {
+  margin: 5px;
 }

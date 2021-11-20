@@ -21,8 +21,12 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputNumberModule} from 'primeng/inputnumber';
 
-import {MenubarModule} from 'primeng/menubar';
+import {TabMenuModule} from 'primeng/tabmenu';
 import {MenuItem} from 'primeng/api';
+import { StoreMenubarComponent } from './store-menubar/store-menubar.component';
+
+import { CoreModule } from './core/core.module';
+
 
 @NgModule({
   declarations: [
@@ -36,9 +40,13 @@ import {MenuItem} from 'primeng/api';
     AbcProductosComponent,
     GananciasComponent,
     ProductosComponent,
-    VentaPendienteComponent
+    VentaPendienteComponent,
+    StoreMenubarComponent
   ],
   imports: [
+    CoreModule,
+
+
     BrowserModule,
     AppRoutingModule,
     ClarityModule,
@@ -46,7 +54,7 @@ import {MenuItem} from 'primeng/api';
     ButtonModule,
     InputTextModule,
     InputNumberModule,
-    MenubarModule
+    TabMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

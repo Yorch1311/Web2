@@ -1,130 +1,50 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="container-fluid">
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a router-link="/inicio" routerLinkActive="active" class="nav-link">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a router-link="/carrito" routerLinkActive="active" class="nav-link">Carrito</a>
-            </li>
-            <li class="nav-item">
-                <a router-link="/cuenta" routerLinkActive="active" class="nav-link">Cuenta</a>
-            </li>
-            <li class="nav-item">
-                <a router-link="/logout" routerLinkActive="active" class="nav-link">Cerrar sesion</a>
-            </li>
-        </ul>
-    </div>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a href="/inicio" router-link="/inicio" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-home" style="font-size: 30px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/carrito" router-link="/carrito" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-shopping-cart" style="font-size: 30px"></i>
+        </a>
+
+      </li>
+      <li class="nav-item">
+        <a href="/cuenta" router-link="/cuenta" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-user" style="font-size: 30px"></i>
+        </a>
+
+      </li>
+      <li class="nav-item">
+        <a href="/login" router-link="/login" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-sign-out" style="font-size: 30px"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-<div class="products">
+<clr-datagrid>
+  <clr-dg-column [clrDgField]="'img'">Imagen</clr-dg-column>
+  <clr-dg-column [clrDgField]="'nombre'">Nombre</clr-dg-column>
+  <clr-dg-column [clrDgField]="'precio'" clrDgColType="number">Precio</clr-dg-column>
+  <clr-dg-column [clrDgField]="'cantidad'" clrDgColType="number">Cantidad</clr-dg-column>
+  <clr-dg-column [clrDgField]="'total'" clrDgColType="number">Total</clr-dg-column>
+  <clr-dg-column>Eliminar</clr-dg-column>
+  <clr-dg-row *clrDgItems="let prodcarrito of carrito">
+    <clr-dg-cell>
+      <img src="{{ prodcarrito.img }}" alt="Imagen de {{ prodcarrito.nombre }}" width="100px">
+    </clr-dg-cell>
+    <clr-dg-cell>{{ prodcarrito.nombre }}</clr-dg-cell>
+    <clr-dg-cell>$ {{ prodcarrito.precio }} mxn</clr-dg-cell>
+    <clr-dg-cell>{{ prodcarrito.cantidad }}</clr-dg-cell>
+    <clr-dg-cell>$ {{ prodcarrito.cantidad * prodcarrito.precio }} mxn</clr-dg-cell>
+    <clr-dg-cell>
+      <button>X</button>
+    </clr-dg-cell>
+  </clr-dg-row>
 
-    <div class="titulo">
-        <h2>Imagen</h2>
-        <h2>Producto</h2>
-        <h2>Total</h2>
-        <h2>Cantidad</h2>
-        <h2></h2>
-    </div>
-
-    <div class="item-product">
-
-        <img src="https://placekitten.com/60/60" alt="Producto">
-
-        <p>Producto 1</p>
-
-        <p>$ 200.00</p>
-
-        <input type="number" max="100" min="0" size="4">
-
-        <button>Cerrar</button>
-    </div>
-    <div class="item-product">
-
-        <img src="https://placekitten.com/60/60" alt="Producto">
-
-        <p>Producto 1</p>
-
-        <p>$ 200.00</p>
-
-        <input type="number" max="100" min="0" size="4">
-
-        <button>Cerrar</button>
-    </div>
-    <div class="item-product">
-
-        <img src="https://placekitten.com/60/60" alt="Producto">
-
-        <p>Producto 1</p>
-
-        <p>$ 200.00</p>
-
-        <input type="number" max="100" min="0" size="4">
-
-        <button>Cerrar</button>
-    </div>
-    <div class="item-product">
-
-        <img src="https://placekitten.com/60/60" alt="Producto">
-
-        <p>Producto 1</p>
-
-        <p>$ 200.00</p>
-
-        <input type="number" max="100" min="0" size="4">
-
-        <button>Cerrar</button>
-    </div>
-    <div class="item-product">
-
-        <img src="https://placekitten.com/60/60" alt="Producto">
-
-        <p>Producto 1</p>
-
-        <p>$ 200.00</p>
-
-        <input type="number" max="100" min="0" size="4">
-
-        <button>Cerrar</button>
-    </div>
-    <div class="item-product">
-
-        <img src="https://placekitten.com/60/60" alt="Producto">
-
-        <p>Producto 1</p>
-
-        <p>$ 200.00</p>
-
-        <input type="number" max="100" min="0" size="4">
-
-        <button>Cerrar</button>
-    </div>
-
-    <button pButton type="button" label="Comprar"></button>
-</div>
-
-<div>
-    <form>
-        <h1>Compra</h1>
-        <div class="p-fluid">
-            <div class="p-field">
-                <label for="">Tipoo de pago</label>
-                <select name="" id="">
-                    <option value="contado">Contado</option>
-                    <option value="credito">Credito</option>
-                    <option value="efectivo">Efectivo</option>
-                </select>
-            </div>
-            <div class="p-field">
-                <label>No. Tarjeta</label>
-                <input type="text" pInputText />
-            </div>
-            <div class="p-field">
-                <label>Clave trasera</label>
-                <input type="text" pInputText />
-            </div>
-        </div>
-        <br>
-        <button pButton type="button" label="Pagar"></button>
-    </form>
-</div>
+</clr-datagrid>

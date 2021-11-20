@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-registro',
@@ -8,15 +7,13 @@ import { MenuItem } from 'primeng/api';
 })
 export class RegistroComponent implements OnInit {
 
-  public items: MenuItem[] = [];
-
   constructor() { }
 
   ngOnInit(): void {
-    this.items = [
-      { label: 'Iniciar Sesion'},
-      { label: 'Registrarse' }
-    ];
+
+  }
+  registro(){
+
   }
 
 }

@@ -1,32 +1,65 @@
-<form clrForm>
-    <h1>Edicion de Cuenta</h1>
-    <div class="p-fluid">
-        <div class="p-field">
-            <label for="nombre">Nombre</label>
-            <input id="nombre" type="text" pInputText>
-        </div>
-        <div class="p-field">
-            <label for="apellido">Apellido</label>
-            <input id="apellido" type="text" pInputText>
-        </div>
-        <div class="p-field">
-            <label for="domicilio">Domicilio</label>
-            <input id="domicilio" type="text" pInputText>
-        </div>
-        <div class="p-field">
-            <label for="contraseña">Contraseña</label>
-            <input id="contraseña" type="text" pInputText>
-        </div>
-        <div class="p-field">
-            <label for="contraseña2">Confirmar contraseña</label>
-            <input id="contraseña2" type="text" pInputText>
-        </div>
-    </div>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a href="/inicio" router-link="/inicio" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-home" style="font-size: 30px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/carrito" router-link="/carrito" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-shopping-cart" style="font-size: 30px"></i>
+        </a>
 
-    <br>
-    <button pButton type="button" label="Guardar"></button>
-    <button pButton type="button" label="Cancelar"></button>
-    <!--
-    <button class="btn btn-primary" type="submit">Guardar</button>
-    <button class="btn btn-primary" type="submit">Cancelar</button>-->
-</form>
+      </li>
+      <li class="nav-item">
+        <a href="/cuenta" router-link="/cuenta" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-user" style="font-size: 30px"></i>
+        </a>
+
+      </li>
+      <li class="nav-item">
+        <a href="/login" router-link="/login" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-sign-out" style="font-size: 30px"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="registro">
+<h2>Datos de la Cuenta</h2>
+
+  <div class="row">
+    <div class="col-4">
+      <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
+    </div>
+    <div class="col-8">
+      <input type="text" class="form-control" placeholder="Apellido(s)" aria-label="Last name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Domicilio" aria-label="First name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <input type="text" class="form-control" placeholder="Usuario" aria-label="First name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <input type="text" class="form-control" placeholder="Contraseña" aria-label="First name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <input type="text" class="form-control" placeholder="Confirmar contraseña" aria-label="First name">
+    </div>
+  </div>
+  <div class="row">
+    <button class="botones btn btn-dark">Guardar</button>
+    <button class="botones btn btn-dark">Cancelar</button>
+  </div>
+</div>

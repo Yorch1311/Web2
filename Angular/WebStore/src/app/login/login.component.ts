@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,16 +7,15 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  public items: MenuItem[] = [];
-
   constructor() { }
 
   ngOnInit(): void {
-    this.items = [
-      { label: 'Iniciar Sesion'},
-      { label: 'Registrarse' }
-    ];
+
+  }
+
+  ingresar() {
+    location.href = "/inicio";
+
   }
 
 }
