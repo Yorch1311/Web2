@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComunicacionService } from '../comunicacion.service';
 
 @Component({
   selector: 'app-store-menubar',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreMenubarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private comunicacion: ComunicacionService) { }
 
+  permiso = this.comunicacion.getPermiso;
   ngOnInit(): void {
   }
 

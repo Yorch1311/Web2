@@ -1,53 +1,72 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="container-fluid">
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a router-link="/inicio" routerLinkActive="active" class="nav-link">ABC Producto</a>
-            </li>
-            <li class="nav-item">
-                <a router-link="/carrito" routerLinkActive="active" class="nav-link">Ganancias</a>
-            </li>
-            <li class="nav-item">
-                <a router-link="/cuenta" routerLinkActive="active" class="nav-link">Productos</a>
-            </li>
-            <li class="nav-item">
-                <a router-link="/cuenta" routerLinkActive="active" class="nav-link">Ventas pendientes</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<app-store-menubar></app-store-menubar>
 
-<div>
+<div class="container">
+
+  <div class="row">
     <h2>Ventas de los productos</h2>
+  </div>
 
-    <label for="">Tpo de grafica</label>
-    <select name="" id="">
-        <option value="mes">mes</option>
-        <option value="año">año</option>
-    </select>
-    <br>
-    <label for="">Año</label>
-    <input type="number" min="2000" max="2021">
-    <br>
+  <div class="row">
 
-    <label for="Mes">Mes</label>
-    <select name="" id="">
-        <option value="ene">ene</option>
-        <option value="feb">feb</option>
-        <option value="mar">mar</option>
-        <option value="abr">abr</option>
-        <option value="may">may</option>
-        <option value="jun">jun</option>
-        <option value="jul">jul</option>
-        <option value="ago">ago</option>
-        <option value="sep">sep</option>
-        <option value="oct">oct</option>
-        <option value="nov">nov</option>
-        <option value="dic">dic</option>
-    </select>
-    <br>
+    <div class="col-3">
+      <label>Escoja el tipo de grafica:</label>
+    </div>
 
-    <button pButton type="button" label="Generar grafica" ></button>
-    
-    <img src="./diagrama-barras.jpg" alt="foto" width="200px">
+    <div class="col-2">
+      <select class="form-control" #selectGrafica (change)="tipoGrafica(selectGrafica.value)" placeholder="TIpo de grafica">
+        <option value="">Tipo...</option>
+        <option value="Mes">Mes</option>
+        <option value="Año">Año</option>
+      </select>
+    </div>
+
+    <div class="col-2" *ngIf="opcion == 'Mes'">
+
+      <select class="form-control" #selectMes (change)="mes(selectMes.value)">
+        <option value="">Mes</option>
+        <option value="Enero">Enero</option>
+        <option value="Febrero">Febrero</option>
+        <option value="Marzo">Marzo</option>
+        <option value="Abril">Abril</option>
+        <option value="Mayo">Mayo</option>
+        <option value="Junio">Junio</option>
+        <option value="Julio">Julio</option>
+        <option value="Agosto">Agosto</option>
+        <option value="Septiembre">Septiembre</option>
+        <option value="Octubre">Octubre</option>
+        <option value="Noviembre">Noviembre</option>
+        <option value="Diciembre">Diciembre</option>
+      </select>
+    </div>
+
+    <div class="col-2" *ngIf="opcion == 'Año'">
+      <input class="form-control" type="number" min="2000" max="{{ currentDate | date: 'y' }}"
+        placeholder="Año" #selectAnio (change)="anio(selectAnio.value)">
+    </div>
+
+    <div class="col-3" *ngIf="valor != ''">
+      <button class="botones btn btn-dark" (click)="generar()">Generar</button>
+    </div>
+
+  </div>
+
+  <clr-datagrid *ngIf="mostrar == true">
+    <clr-dg-column [clrDgField]="'img'">Imagen</clr-dg-column>
+    <clr-dg-column [clrDgField]="'nombre'">Nombre</clr-dg-column>
+    <clr-dg-column [clrDgField]="'precio'" clrDgColType="number">Precio</clr-dg-column>
+    <clr-dg-column [clrDgField]="'cantidad'" clrDgColType="number">Cantidad</clr-dg-column>
+    <clr-dg-column [clrDgField]="'total'" clrDgColType="number">Total</clr-dg-column>
+    <clr-dg-row *clrDgItems="let prodcarrito of productos">
+      <clr-dg-cell>
+        <img src="{{ prodcarrito.img }}" alt="Imagen de {{ prodcarrito.nombre }}" width="100px">
+      </clr-dg-cell>
+      <clr-dg-cell>{{ prodcarrito.nombre }}</clr-dg-cell>
+      <clr-dg-cell>$ {{ prodcarrito.precio }} mxn</clr-dg-cell>
+      <clr-dg-cell>{{ prodcarrito.cantidad }} {{ prodcarrito.unidad }}</clr-dg-cell>
+      <clr-dg-cell>$ {{ prodcarrito.cantidad * prodcarrito.precio }} mxn</clr-dg-cell>
+    </clr-dg-row>
+
+  </clr-datagrid>
+
+
 </div>

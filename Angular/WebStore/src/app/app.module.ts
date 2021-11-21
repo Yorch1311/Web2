@@ -21,12 +21,10 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputNumberModule} from 'primeng/inputnumber';
 
-import {TabMenuModule} from 'primeng/tabmenu';
-import {MenuItem} from 'primeng/api';
 import { StoreMenubarComponent } from './store-menubar/store-menubar.component';
 
 import { CoreModule } from './core/core.module';
-
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -45,7 +43,7 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     CoreModule,
-
+    ChartsModule,
 
     BrowserModule,
     AppRoutingModule,
@@ -53,8 +51,7 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     ButtonModule,
     InputTextModule,
-    InputNumberModule,
-    TabMenuModule
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]

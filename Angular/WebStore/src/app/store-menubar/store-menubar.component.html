@@ -1,45 +1,53 @@
-<div class="caja2">
-  <nav id="menu-login" class="navbar navbar-expand navbar-dark bg-dark">
-    <div class="container-fluid">
-      <!--<a class="navbar-brand">Tienda en Casa</a>-->
-      <ul class="nav nav-fill">
-        <li class="nav-item">
-          <a href="/inicio" routerLink="/inicio" routerLinkActive="active" class="nav-link">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a href="/registro" routerLink="/registro" routerLinkActive="active" class="nav-link">Registrarse</a>
-        </li>
-        <li class="nav-item">
-          <a href="/registro" routerLink="/registro" routerLinkActive="active" class="nav-link">Registrarse</a>
-        </li>
-        <li class="nav-item">
-          <a href="/registro" routerLink="/registro" routerLinkActive="active" class="nav-link">Registrarse</a>
-        </li>
-        <li class="nav-item">
-          <a href="/registro" routerLink="/registro" routerLinkActive="active" class="nav-link">Registrarse</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</div>
-<div class="caja">
-  <nav id="menu-login" class="navbar navbar-expand navbar-dark bg-dark">
-    <div class="container-fluid">
-      <!--<a class="navbar-brand">Tienda en Casa</a>-->
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a routerLink="/login" routerLinkActive="active" class="nav-link">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/registro" routerLinkActive="active" class="nav-link">Carrito</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/registro" routerLinkActive="active" class="nav-link">Cuenta</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/registro" routerLinkActive="active" class="nav-link">Cerrar Sesion</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</div>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <ul class="navbar-nav me-auto" *ngIf="permiso == true">
+      <li class="nav-item">
+        <a href="/abc-productos" router-link="/abc-productos" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-plus" style="font-size: 30px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/producto" router-link="/producto" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-dollar" style="font-size: 30px"></i>
+        </a>
+
+      </li>
+      <li class="nav-item">
+        <a href="/ganancia" router-link="/ganancia" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-chart-line" style="font-size: 30px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/venta" router-link="/venta" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-shopping-bag" style="font-size: 30px"></i>
+        </a>
+      </li>
+
+    </ul>
+
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a href="/inicio" router-link="/inicio" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-home" style="font-size: 30px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/carrito" router-link="/carrito" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-shopping-cart" style="font-size: 30px"></i>
+        </a>
+
+      </li>
+      <li class="nav-item">
+        <a href="/cuenta" router-link="/cuenta" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-user" style="font-size: 30px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" router-link="/login" routerLinkActive="active" class="nav-link">
+          <i class="pi pi-sign-out" style="font-size: 30px"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
