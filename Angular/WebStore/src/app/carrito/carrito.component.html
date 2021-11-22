@@ -1,23 +1,29 @@
 <app-store-menubar></app-store-menubar>
 
-<clr-datagrid>
-  <clr-dg-column [clrDgField]="'img'">Imagen</clr-dg-column>
-  <clr-dg-column [clrDgField]="'nombre'">Nombre</clr-dg-column>
-  <clr-dg-column [clrDgField]="'precio'" clrDgColType="number">Precio</clr-dg-column>
-  <clr-dg-column [clrDgField]="'cantidad'" clrDgColType="number">Cantidad</clr-dg-column>
-  <clr-dg-column [clrDgField]="'total'" clrDgColType="number">Total</clr-dg-column>
-  <clr-dg-column>Eliminar</clr-dg-column>
-  <clr-dg-row *clrDgItems="let prodcarrito of carrito">
-    <clr-dg-cell>
-      <img src="{{ prodcarrito.img }}" alt="Imagen de {{ prodcarrito.nombre }}" width="100px">
-    </clr-dg-cell>
-    <clr-dg-cell>{{ prodcarrito.nombre }}</clr-dg-cell>
-    <clr-dg-cell>$ {{ prodcarrito.precio }} mxn</clr-dg-cell>
-    <clr-dg-cell>{{ prodcarrito.cantidad }} {{ prodcarrito.unidad }}</clr-dg-cell>
-    <clr-dg-cell>$ {{ prodcarrito.cantidad * prodcarrito.precio }} mxn</clr-dg-cell>
-    <clr-dg-cell>
-      <button>X</button>
-    </clr-dg-cell>
-  </clr-dg-row>
+<div class="container">
+  <clr-datagrid>
+    <clr-dg-column [clrDgField]="'img'">Imagen</clr-dg-column>
+    <clr-dg-column [clrDgField]="'nombre'">Nombre</clr-dg-column>
+    <clr-dg-column [clrDgField]="'precio'" clrDgColType="number">Precio</clr-dg-column>
+    <clr-dg-column [clrDgField]="'cantidad'" clrDgColType="number">Cantidad</clr-dg-column>
+    <clr-dg-column [clrDgField]="'total'" clrDgColType="number">Total</clr-dg-column>
+    <clr-dg-column>Eliminar</clr-dg-column>
+    <clr-dg-row *clrDgItems="let prodcarrito of carrito">
+      <clr-dg-cell>
+        <img src="{{ prodcarrito.img }}" alt="Imagen de {{ prodcarrito.nombre }}" width="100px">
+      </clr-dg-cell>
+      <clr-dg-cell>{{ prodcarrito.nombre }}</clr-dg-cell>
+      <clr-dg-cell>$ {{ prodcarrito.precio }} mxn</clr-dg-cell>
+      <clr-dg-cell>{{ prodcarrito.cantidad }} {{ prodcarrito.unidad }}</clr-dg-cell>
+      <clr-dg-cell>$ {{ prodcarrito.cantidad * prodcarrito.precio }} mxn</clr-dg-cell>
+      <clr-dg-cell>
+        <button class="btn btn-dark">
+          <i class="bi bi-x-circle" style="font-size: 20px;"></i>
+        </button>
+      </clr-dg-cell>
+    </clr-dg-row>
+  </clr-datagrid>
 
-</clr-datagrid>
+  <button class="botones btn btn-dark">Comprar</button>
+  <button class="botones btn btn-dark">Guardar</button>
+</div>

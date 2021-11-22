@@ -13,39 +13,57 @@ export class InicioComponent implements OnInit {
 
   productos : Producto[] = [
     {
+      id: 1,
       nombre: "Tomate",
+      descripcion: "De temporada",
+      cantidad: 40,
+      unidad: "kg",
       precio: 500.20,
-      unidad: "kilo",
       img: "https://placekitten.com/100/100"
     },
     {
-      nombre: "Escoba",
-      precio: 100.00,
-      unidad: "pz",
-      img: "https://placekitten.com/100/100"
-    },
-    {
+      id: 2,
       nombre: "Tomate",
+      descripcion: "De temporada",
+      cantidad: 40,
+      unidad: "kg",
       precio: 500.20,
-      unidad: "kilo",
       img: "https://placekitten.com/100/100"
     },
     {
-      nombre: "Escoba",
-      precio: 100.00,
-      unidad: "pz",
-      img: "https://placekitten.com/100/100"
-    },
-    {
+      id: 3,
       nombre: "Tomate",
+      descripcion: "De temporada",
+      cantidad: 40,
+      unidad: "kg",
       precio: 500.20,
-      unidad: "kilo",
       img: "https://placekitten.com/100/100"
     },
     {
-      nombre: "Escoba",
-      precio: 100.00,
-      unidad: "pz",
+      id: 4,
+      nombre: "Tomate",
+      descripcion: "De temporada",
+      cantidad: 40,
+      unidad: "kg",
+      precio: 500.20,
+      img: "https://placekitten.com/100/100"
+    },
+    {
+      id: 5,
+      nombre: "Tomate",
+      descripcion: "De temporada",
+      cantidad: 40,
+      unidad: "kg",
+      precio: 500.20,
+      img: "https://placekitten.com/100/100"
+    },
+    {
+      id: 6,
+      nombre: "Tomate",
+      descripcion: "De temporada",
+      cantidad: 40,
+      unidad: "kg",
+      precio: 500.20,
       img: "https://placekitten.com/100/100"
     }
   ];

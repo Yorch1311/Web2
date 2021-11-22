@@ -2,7 +2,47 @@
 
 <div class="container">
   <h2>ABC de Productos</h2>
+
   <div class="row">
+    <clr-datagrid>
+      <clr-dg-column [clrDgField]="'id'">ID</clr-dg-column>
+      <clr-dg-column [clrDgField]="'nombre'">Nombre</clr-dg-column>
+      <clr-dg-column [clrDgField]="'descripcion'">Descripcion</clr-dg-column>
+      <clr-dg-column [clrDgField]="'cantidad'">Cantidad</clr-dg-column>
+      <clr-dg-column [clrDgField]="'unidad'">Unidad</clr-dg-column>
+      <clr-dg-column [clrDgField]="'precio'">Precio</clr-dg-column>
+      <clr-dg-column [clrDgField]="'imagen'">Imagen</clr-dg-column>
+      <clr-dg-column>Detalles</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let producto of productos">
+        <clr-dg-cell>{{ producto.id }}</clr-dg-cell>
+        <clr-dg-cell>{{ producto.nombre }}</clr-dg-cell>
+        <clr-dg-cell>{{ producto.descripcion }} </clr-dg-cell>
+        <clr-dg-cell>{{ producto.cantidad }}</clr-dg-cell>
+        <clr-dg-cell>{{ producto.unidad}} </clr-dg-cell>
+        <clr-dg-cell>{{ producto.precio }}</clr-dg-cell>
+        <clr-dg-cell>
+          <img src="{{ producto.img}} " alt="" width="100px">
+        </clr-dg-cell>
+
+        <clr-dg-cell>
+          <button class="botones btn btn-dark">
+            <i class="bi bi-info-circle"></i>
+          </button>
+        </clr-dg-cell>
+      </clr-dg-row>
+
+    </clr-datagrid>
+  </div>
+
+  <div class="row">
+    <div class="col col-2">
+      <input type="text" class="form-control" placeholder="ID" readonly>
+    </div>
+  </div>
+
+  <div class="row">
+
     <div class="col-8">
       <div class="col">
         <input type="text" class="form-control" placeholder="Nombre del producto">
@@ -10,6 +50,7 @@
       <div class="col">
         <textarea class="form-control" placeholder="Descripcion" rows="6"></textarea>
       </div>
+
       <div class="row">
         <div class="col col-3">
           <input type="number" class="form-control" placeholder="Cantidad" max="100" min="0.01">
