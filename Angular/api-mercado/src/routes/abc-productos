@@ -1,0 +1,50 @@
+const { Router } = require('express');
+const router = Router();
+const db = require("./index.js");
+
+//mostrar pruductos existentes
+router.get('/', async (req, res) => {
+    
+    var prodList = [];
+    const snapshot = await db.collection('productos').get();
+    snapshot.forEach((doc) =>{
+        prodList.push(doc.data());
+    });
+    res.json(prodList);
+    res.end();
+});
+//agregar producto
+router.post('/', async (req, res) => {
+    
+    const datoReq = req.body;
+    const snapshot = await db.collection('productos').get();
+    var size = snapshot.size;
+    //console.log(size);
+    size++;
+
+    const producto = db.collection('productos').doc(size.toString());
+    var data = { ...datoReq, id: size, estado: "S"};
+    await producto.set(data);
+    res.status(200).send("Registro exitoso.");
+    res.end();
+});
+//modificar producto
+router.put('/', async (req, res) => {
+    const datoReq = req.body;
+    const snapshot =  db.collection('productos').doc(datoReq.id+"");
+    snapshot.update(datoReq);
+    console.log(datoReq);
+    res.status(200).send("Actualizacion exitosa");
+    res.end();
+});
+//borrar producto
+router.delete('/', async (req, res) => {
+    
+    const datoReq = req.body;
+    const snapshot =  db.collection('productos').doc(datoReq.id+"");
+    snapshot.update( { estado : "N"} );
+    res.status(200).send("Eliminacion exitosa");
+    res.end();
+});
+
+module.exports = router;

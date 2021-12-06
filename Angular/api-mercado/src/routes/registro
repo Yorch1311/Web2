@@ -1,0 +1,26 @@
+const { Router } = require('express');
+const router = Router();
+const db = require("./index.js");
+
+//enviar datos para crear nuevo usuario
+router.post('/', async (req, res) => {
+
+    const datoReq = req.body;
+    await db.collection('usuarios').doc(datoReq.email).get()
+    .then(doc => {
+        if (doc.exists){
+            res.status(400).send('El corre ya estaba registrado.');
+        }else{
+            const user = db.collection('usuarios').doc(datoReq.email);
+            const datos = { ...datoReq, rol: "cliente"}; 
+        
+            console.log(datos);
+            user.set(datos);
+            res.status(200).send("Registro exitoso.");
+        }
+    });
+
+    res.end();
+});
+
+module.exports = router;

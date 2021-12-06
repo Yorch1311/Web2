@@ -12,10 +12,5 @@ export class AppComponent {
   public items: MenuItem[] = [];
 
   ngOnInit(): void {
-    this.items = [
-      { label: 'Iniciar Sesion'},
-      { label: 'Registrarse' }
-    ];
-
   }
 }
