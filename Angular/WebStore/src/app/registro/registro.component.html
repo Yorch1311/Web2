@@ -1,40 +1,36 @@
 <div class="registro">
   <app-header-login></app-header-login>
+
   <i class="bi bi-person-plus-fill" style="font-size: 200px"></i>
   <div class="row">
     <div class="col-4">
-      <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
+      <input type="text" class="form-control" placeholder="Nombre" #nombre>
     </div>
     <div class="col-8">
-      <input type="text" class="form-control" placeholder="Apellido(s)" aria-label="Last name">
+      <input type="text" class="form-control" placeholder="Apellido(s)" #apellido>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <input type="text" class="form-control" placeholder="Domicilio" aria-label="First name">
+      <input type="text" class="form-control" placeholder="Domicilio" #domicilio>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <input type="text" class="form-control" placeholder="Correo" aria-label="First name">
+      <input type="text" class="form-control" placeholder="Correo" #email>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <input type="text" class="form-control" placeholder="Usuario" aria-label="First name">
+      <input type="password" class="form-control" placeholder="Contraseña" #password1>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <input type="text" class="form-control" placeholder="Contraseña" aria-label="First name">
+      <input type="password" class="form-control" placeholder="Confirmar contraseña" #password2>
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Confirmar contraseña" aria-label="First name">
-    </div>
-  </div>
-  <div class="row">
-    <button class="botones btn btn-dark" (click)="registro()">Registrarse</button>
+    <button class="botones btn btn-dark" (click)="registro(nombre.value, apellido.value, domicilio.value, email.value, password1.value, password2.value)">Registrarse</button>
   </div>
 </div>

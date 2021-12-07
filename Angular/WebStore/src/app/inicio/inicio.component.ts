@@ -1,6 +1,9 @@
 import { TmplAstBoundAttribute } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../producto';
+import { ApiMercadoService } from '../api-mercado.service';
+import { Inicio } from '../inicio';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-inicio',
@@ -9,9 +12,27 @@ import { Producto } from '../producto';
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
+  producto: Inicio[] = [];
+  email: string | null;
 
-  productos : Producto[] = [
+  constructor(private api_service: ApiMercadoService) {
+    this.email = sessionStorage.getItem('email');
+    if(this.email == null){
+      location.href = "/";
+    }
+    console.log("Funciona el constructor");
+    this.getProducto();
+  }
+
+  getProducto(){
+    this.api_service.getProductos().subscribe(productos => this.producto = productos);
+  }
+
+  agregarCarrito(id: number){
+    window.alert("id:"+id);
+  }
+
+  /*productos : Producto[] = [
     {
       id: 1,
       nombre: "Tomate",
@@ -66,7 +87,7 @@ export class InicioComponent implements OnInit {
       precio: 500.20,
       img: "https://placekitten.com/100/100"
     }
-  ];
+  ];*/
 
   ngOnInit(): void {
   }

@@ -8,7 +8,13 @@ import { Producto } from '../producto';
 })
 export class AbcProductosComponent implements OnInit {
 
-  constructor() { }
+  email: string | null;
+  constructor() {
+    this.email = sessionStorage.getItem('email');
+    if(this.email == null){
+      location.href = "/";
+    }
+   }
 
   productos: Producto[] = [
     {

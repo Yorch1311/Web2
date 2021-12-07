@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="container-fluid">
 
-    <ul class="navbar-nav me-auto" *ngIf="permiso == true">
+    <ul class="navbar-nav me-auto" *ngIf="rol == 'administrador'">
       <li class="nav-item">
         <a href="/abc-productos" router-link="/abc-productos" routerLinkActive="active" class="nav-link">
           <i class="bi bi-plus-circle" style="font-size: 30px"></i>
@@ -44,7 +44,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="/login" router-link="/login" routerLinkActive="active" class="nav-link">
+        <a (click)="salir()" routerLinkActive="active" class="nav-link">
           <i class="bi bi-door-open-fill" style="font-size: 30px"></i>
         </a>
       </li>

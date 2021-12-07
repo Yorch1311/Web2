@@ -1,17 +1,20 @@
 <div class="login">
   <app-header-login></app-header-login>
+
   <i class="bi bi-person-circle" style="font-size: 200px"></i>
-  <div class="row">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Ingrese su usuario" aria-label="First name">
+
+    <div class="row">
+      <div class="col">
+        <input #email type="email" class="form-control" placeholder="alguien@gmail.com" >
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Ingrese su contraseña" aria-label="Last name">
+    <div class="row">
+      <div class="col">
+        <input #password type="password" class="form-control" placeholder="Ingrese su contraseña">
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <button class="botones btn btn-dark" (click)="ingresar()">Ingresar</button>
-  </div>
+    <div class="row">
+      <button  class="botones btn btn-dark" (click)="ingresar(email.value, password.value)">Ingresar</button>
+    </div>
+
 </div>

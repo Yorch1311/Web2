@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CuentaComponent implements OnInit {
 
-  constructor() { }
+  email: string | null;
+  constructor() {
+    this.email = sessionStorage.getItem('email');
+    if(this.email == null){
+      location.href = "/";
+    }
+  }
 
   ngOnInit(): void {
   }

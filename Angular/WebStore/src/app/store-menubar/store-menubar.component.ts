@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComunicacionService } from '../comunicacion.service';
+import { ApiMercadoService } from '../api-mercado.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-store-menubar',
@@ -8,10 +10,20 @@ import { ComunicacionService } from '../comunicacion.service';
 })
 export class StoreMenubarComponent implements OnInit {
 
-  constructor(private comunicacion: ComunicacionService) { }
+  rol : string | null;
+
+  constructor(private comunicacion: ComunicacionService, private api: ApiMercadoService) {
+    this.rol = sessionStorage.getItem('rol');
+  }
 
   permiso = this.comunicacion.getPermiso;
   ngOnInit(): void {
+
+  }
+
+  salir(){
+    sessionStorage.clear();
+    location.href ="/login";
   }
 
 }

@@ -25,6 +25,8 @@ import { StoreMenubarComponent } from './store-menubar/store-menubar.component';
 
 import { CoreModule } from './core/core.module';
 import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http'
+
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { ChartsModule } from 'ng2-charts';
     BrowserAnimationsModule,
     ButtonModule,
     InputTextModule,
-    InputNumberModule
+    InputNumberModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

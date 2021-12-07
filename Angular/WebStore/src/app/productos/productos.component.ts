@@ -8,7 +8,13 @@ import { ProdCarrito } from '../prod-carrito';
 })
 export class ProductosComponent implements OnInit {
 
-  constructor() { }
+  email : string | null;
+  constructor() {
+    this.email = sessionStorage.getItem('email');
+    if(this.email == null){
+      location.href = "/";
+    }
+  }
 
   currentDate = new Date();
   opcion = "";

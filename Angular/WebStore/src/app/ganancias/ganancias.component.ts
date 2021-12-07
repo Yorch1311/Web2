@@ -9,7 +9,13 @@ import { Color, Label } from 'ng2-charts';
 })
 export class GananciasComponent implements OnInit {
 
-  constructor() {}
+  email: string | null;
+  constructor() {
+    this.email = sessionStorage.getItem('email');
+    if(this.email == null){
+      location.href = "/";
+    }
+  }
 //Datos de prueba para la grafica
   public lineChartData: ChartDataSets[] = [
     { data: [1065, 590, 800, 810, 560, 550, 400], label: 'VENTAS' },
