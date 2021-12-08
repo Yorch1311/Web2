@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
     const producto = db.collection('productos').doc(size.toString());
     var data = { ...datoReq, id: size, estado: "S"};
     await producto.set(data);
-    res.status(200).send("Registro exitoso.");
+    //res.status(200).send("Registro exitoso.");
     res.end();
 });
 //modificar producto
@@ -34,16 +34,16 @@ router.put('/', async (req, res) => {
     const snapshot =  db.collection('productos').doc(datoReq.id+"");
     snapshot.update(datoReq);
     console.log(datoReq);
-    res.status(200).send("Actualizacion exitosa");
+    
     res.end();
 });
 //borrar producto
-router.delete('/', async (req, res) => {
+router.post('/delete', async (req, res) => {
     
     const datoReq = req.body;
     const snapshot =  db.collection('productos').doc(datoReq.id+"");
     snapshot.update( { estado : "N"} );
-    res.status(200).send("Eliminacion exitosa");
+    res.json({"message":"producto eliminado"});
     res.end();
 });
 

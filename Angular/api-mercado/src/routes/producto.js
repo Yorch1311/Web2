@@ -2,17 +2,17 @@ const { Router } = require('express');
 const router = Router();
 const db = require("./index.js");
 
-//solicitar cantidades de pruductos vendidoss
-router.get('/', async (req, res) => {
+//solicitar cantidades de pruductos vendidos
+router.post('/', async (req, res) => {
     dataReq = req.body;
-
+    //
     const snapshot = await db.collection('ventas').get();
     var list = [];
     // se obtienen todas los productos vendidos para luego poder sumas sus totales por id
     snapshot.forEach((doc) => {
         var valor = [ doc.data().month, doc.data().year ];
         var pos = 0;//hace referencia a la posicion del arreglo valor, en 0 esta el mes actual y 1 el año
-        //el tipo es year o month
+        //el tipo es year o months
         if (dataReq.tipo == "year"){
             pos = 1;
         } 

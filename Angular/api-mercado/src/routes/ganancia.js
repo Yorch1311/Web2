@@ -3,7 +3,7 @@ const router = Router();
 const db = require("./index.js");
 
 //solicitar ventas totales
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
     
     dataReq = req.body;
 
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
         //la compra debe estar completada y debe cumplir con el mes/año que nos solicitan para contarse
         if(doc.data().estado == "completada"  && dataReq.valor == valor[pos]){
             //console.log(doc.data().productos);
-            list.push( doc.data());
+            list.push( doc.data() );
         }
     });
 
@@ -32,8 +32,8 @@ router.get('/', async (req, res) => {
             console.log(doc);
             total = total + ( doc.prize * doc.quantity );
         });
-        const { year, month} = list[i];
-        const info = {year, month, total};
+        const { year, month, day} = list[i];
+        const info = {year, month, day, total};
         //list[i] = { ...list[i], total };
         enviar.push(info);
     }

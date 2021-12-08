@@ -23,21 +23,41 @@ router.post('/', async (req, res) => {
     const snapshot = await db.collection('usuarios').doc(datoReq.email).collection('carrito').get();
     var estado = "nuevo";
     snapshot.forEach((doc) => {
-        if ( datoReq.producto.id == doc.data().id){
-            id = doc.data().id + "";
-            total = datoReq.producto.quantity + doc.data().quantity;
-            const prod = db.collection('usuarios').doc(datoReq.email).collection('carrito').doc(id);
-            prod.update( { quantity : total } );
-            estado = "viejo";
+        if(doc.exists){
+            if ( datoReq.id == doc.data().id){
+                id = doc.data().id + "";
+                total = datoReq.quantity + doc.data().quantity;
+                const prod = db.collection('usuarios').doc(datoReq.email).collection('carrito').doc(id);
+                prod.update( { quantity : total } );
+                estado = "viejo";
+                const enviar = { 
+                    status: 200, 
+                    message: "Producto sumado a la cantidad existente."
+                };
+                res.json(enviar);
+            }
+        }else{
+            const id = datoReq.id + "";
+            const obj = db.collection('usuarios').doc(datoReq.email).collection('carrito').doc(id);
+            obj.set(datoReq);
+            const enviar = { 
+                status: 200, 
+                message: "Producto agregado al carrito."
+            };
+            res.json(enviar);
         }
     });
     //si el producto no estaba en el carrito entonces se agrega
     if(estado == "nuevo"){
-        const id = datoReq.producto.id + "";
+        const id = datoReq.id + "";
         const obj = db.collection('usuarios').doc(datoReq.email).collection('carrito').doc(id);
-        obj.set(datoReq.producto);
+        obj.set(datoReq);
+        const enviar = { 
+            status: 200, 
+            message: "Producto agregado al carrito."
+        };
+        res.json(enviar);
     }
-    res.status(200).send("Producto agregado al carrito");
 });
 
 module.exports = router;

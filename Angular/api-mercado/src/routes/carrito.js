@@ -3,7 +3,7 @@ const router = Router();
 const db = require("./index.js");
 
 //mostrar productos en carrito
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
     
     const dataReq =  req.body;
     var list = [];
@@ -12,11 +12,11 @@ router.get('/', async (req, res) => {
         list.push(doc.data());
     });
     console.log(list);
-    res.json( { productos : list });
+    res.json( list);
     res.end();
 });
 //realizar una venta
-router.post('/', async (req, res) =>{
+router.post('/buy', async (req, res) =>{
     const datoReq = req.body;
     const snapshotGet = await db.collection('ventas').get();
     var size = snapshotGet.size;
@@ -56,16 +56,30 @@ router.post('/', async (req, res) =>{
 router.put('/', async (req, res) => {
 
     const dataReq =  req.body;
-    dataReq.productos.forEach((doc) =>{
-        //borra producto
-        const producto = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"").delete();
-        //agrega producto
-        const add = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"");
-        add.set(doc);
-        console.log(doc);
-    });
-
-    res.status(200).send("Registro exitoso.");
+    
+    if(dataReq.productos.length == 0){
+        console.log("Se actualizo con 0 productos");
+        const carro = db.collection('usuarios').doc(dataReq.email).collection('carrito').get();
+        (await carro).forEach(doc => {
+            const producto = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"").delete();
+        });
+    }else{
+        console.log("Borrando productos");
+        const carro = db.collection('usuarios').doc(dataReq.email).collection('carrito').get();
+        (await carro).forEach(doc => {
+            const producto = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"").delete();
+        });
+        console.log("Agregando productos");
+        dataReq.productos.forEach((doc) =>{
+            //borra producto
+            const producto = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"").delete();
+            //agrega producto
+            const add = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"");
+            add.set(doc);
+            console.log(doc);
+        });
+    }
+    //res.status(200).send("Registro exitoso.");
     res.end();
 });
 
