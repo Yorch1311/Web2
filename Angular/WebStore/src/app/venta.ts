@@ -1,5 +1,6 @@
+import { Inicio } from "./inicio";
+
 export interface Venta {
-  //nombre: string;
   id: string;
   pedido: number;
   total: number;
@@ -7,6 +8,6 @@ export interface Venta {
   month: string;
   year: string;
   id_venta: string;
-  domicilio: string;
+  address: string;
   productos: [];
 }

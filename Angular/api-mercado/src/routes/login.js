@@ -13,7 +13,8 @@ router.post('/', (req, res) => {
                 const enviar = { 
                     status: 200, 
                     email: doc.data().email, 
-                    rol: doc.data().rol, 
+                    rol: doc.data().rol,
+                    address: doc.data().address,
                     message: "Datos correctos"
                 };
                 res.status(200).json(enviar);
@@ -21,7 +22,8 @@ router.post('/', (req, res) => {
                 const enviar = { 
                     status: 400, 
                     email: "", 
-                    rol: "" , 
+                    rol: "" ,
+                    address: "",
                     message: "Los datos no coinciden"
                 };
                 res.status(200).json(enviar);
@@ -30,7 +32,8 @@ router.post('/', (req, res) => {
             const enviar = { 
                 status: 401, 
                 mail: "", 
-                rol: "" , 
+                rol: "" ,
+                address: "",
                 message: "El usuario no esta registrado"
             };
             res.status(200).json(enviar);

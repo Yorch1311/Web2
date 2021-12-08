@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Venta } from '../venta';
 import { ProdCarrito } from '../prod-carrito';
 import { ApiMercadoService } from '../api-mercado.service';
+import { id, sleep } from '@cds/core/internal';
+import { Inicio } from '../inicio';
 
 @Component({
   selector: 'app-venta-pendiente',
@@ -15,6 +17,7 @@ export class VentaPendienteComponent implements OnInit {
   detalles: Venta | undefined;
   productos: [] = [];
   tabla: string = "";
+  total = [];
 
   constructor(private api: ApiMercadoService) {
 
@@ -26,13 +29,14 @@ export class VentaPendienteComponent implements OnInit {
   }
 
   getVenta(){
-    this.api.ventaPendiente().subscribe(venta => this.ventas = venta);
+    this.api.ventaPendiente().subscribe(venta => this.ventas = venta );
   }
 
   completar(id: string){
     var body = { "id_venta": id };
     this.api.completarVenta( body ).subscribe();
-    //alert("Venta #"+id+" completada");
+
+    alert("Venta #"+id+" completada");
     location.reload();
   }
 
@@ -45,63 +49,7 @@ export class VentaPendienteComponent implements OnInit {
       }
     });
   }
-/*
-  ventas: Venta[] = [
-    {
-    nombre: "Claudia",
-    pedido: 1,
-    total: 10000,
-    fecha: "17/10/2021",
-    domicilio: "Su casita verde"
-    },
-    {
-      nombre: "Paco Parra",
-      pedido: 2,
-      total: 522.50,
-      fecha: "22/10/2021",
-      domicilio: "Su casita roja"
-      },
-      {
-        nombre: "Chisma Nelo",
-        pedido: 3,
-        total: 152.20,
-        fecha: "23/10/2021",
-        domicilio: "Su casita amarilla"
-        }
-  ];
 
-  productos : ProdCarrito[] = [
-    {
-      nombre: "Tomate",
-      precio: 500.20,
-      cantidad: 2,
-      unidad: "kilo",
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      nombre: "Escoba",
-      precio: 100.00,
-      cantidad: 5,
-      unidad: "pz",
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      nombre: "Aguacate",
-      precio: 240.20,
-      cantidad: 0.800,
-      unidad: "kilo",
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      nombre: "Calcetas",
-      precio: 20.00,
-      cantidad: 6,
-      unidad: "pz",
-      img: "https://placekitten.com/100/100"
-    },
-
-  ];
-*/
   ngOnInit(): void {
   }
 

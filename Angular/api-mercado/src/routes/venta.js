@@ -18,15 +18,13 @@ router.get('/', async (req, res) => {
     var list = [];
     const snapshot = await db.collection('ventas').get();
     snapshot.forEach((doc) => {
-
-        //var valor = [ doc.data().month, doc.data().year ];
-        //var pos = 0;
-        /*if (dataReq.tipo == "year"){
-            pos = 1;
-        } */
         //console.log("Tipo:", valor[pos]);
         if ( doc.data().estado == "pendiente" /* && dataReq.valor == valor[pos]*/){
-            list.push(doc.data());
+            total = 0;
+            doc.data().productos.forEach(prod => {
+                total = total + prod.prize * prod.quantity;
+            })
+            list.push({...doc.data(), "total": total});
         }
     });
     res.json(list);

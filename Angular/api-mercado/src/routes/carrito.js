@@ -45,7 +45,8 @@ router.post('/buy', async (req, res) =>{
         day: day,
         month: month,
         year: year,
-        id_venta : size
+        id_venta : size,
+        address: datoReq.address
     };
     //console.log(prods);
     await producto.set(prods);
@@ -59,27 +60,31 @@ router.put('/', async (req, res) => {
     
     if(dataReq.productos.length == 0){
         console.log("Se actualizo con 0 productos");
-        const carro = db.collection('usuarios').doc(dataReq.email).collection('carrito').get();
-        (await carro).forEach(doc => {
+        const carro = await db.collection('usuarios').doc(dataReq.email).collection('carrito').get();
+        carro.forEach(doc => {
             const producto = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"").delete();
         });
     }else{
         console.log("Borrando productos");
-        const carro = db.collection('usuarios').doc(dataReq.email).collection('carrito').get();
-        (await carro).forEach(doc => {
+        const carro = await db.collection('usuarios').doc(dataReq.email).collection('carrito').get();
+
+        carro.forEach(doc => {
             const producto = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"").delete();
         });
-        console.log("Agregando productos");
-        dataReq.productos.forEach((doc) =>{
-            //borra producto
-            const producto = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"").delete();
-            //agrega producto
-            const add = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"");
-            add.set(doc);
-            console.log(doc);
-        });
+        setTimeout(
+            function agregar(){
+                console.log("Agregando productos");
+                dataReq.productos.forEach((doc) => {
+                    //agrega producto
+                    const add = db.collection('usuarios').doc(dataReq.email).collection('carrito').doc(doc.id+"");
+                    add.set(doc);
+                    console.log(doc);
+                });
+        },2000);
+        
     }
     //res.status(200).send("Registro exitoso.");
+    
     res.end();
 });
 

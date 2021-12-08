@@ -107,19 +107,19 @@ export class GananciasComponent implements OnInit {
       } else if (this.tipo == 'month') {
         this.ventas.forEach((data) => {
           var i = data.day;
-          if (i < 31) {
-            datosM[3] = datosM[3] + data.total;
-          } else if (i < 22) {
-            datosM[2] = datosM[2] + data.total;
+          if (i < 8) {
+            datosM[0] = datosM[0] + data.total;
           } else if (i < 15) {
             datosM[1] = datosM[1] + data.total;
-          } else if (i < 8) {
-            datosM[0] = datosM[0] + data.total;
+          } else if (i < 22) {
+            datosM[2] = datosM[2] + data.total;
+          } else if (i < 32) {
+            datosM[3] = datosM[3] + data.total;
           }
         });
         console.log(datosM);
         this.data = datosM;
-        this.lineChartLabels = ['Semana 1', 'Semana ', 'Semana 3', 'Semana 4'];
+        this.lineChartLabels = ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'];
       }
 
       this.lineChartData = [{ data: this.data, label: 'VENTAS' }]

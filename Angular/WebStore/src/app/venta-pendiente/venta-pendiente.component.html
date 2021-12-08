@@ -1,6 +1,6 @@
 <app-store-menubar></app-store-menubar>
 
-<div class="container">
+<div class="container main">
   <br>
   <h2>Tabla de ventas pendientes</h2>
 
@@ -18,7 +18,7 @@
       <clr-dg-cell>{{ venta.id_venta }}</clr-dg-cell>
       <clr-dg-cell>$ {{ venta.total }} </clr-dg-cell>
       <clr-dg-cell>{{ venta.day }}/{{ venta.month }}/{{ venta.year }}</clr-dg-cell>
-      <clr-dg-cell>{{ venta.domicilio}} </clr-dg-cell>
+      <clr-dg-cell>{{ venta.address}} </clr-dg-cell>
       <clr-dg-cell>
         <button class="botones btn btn-dark check" (click)="completar(venta.id_venta)">
           <i class="bi bi-check-circle"></i>
@@ -32,6 +32,7 @@
     </clr-dg-row>
 
   </clr-datagrid>
+  <br>
   <div class="container" *ngIf="tabla=='show'">
     <h2>Pedido #{{ detalles?.id_venta }}</h2>
 

@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
           window.sessionStorage;
           sessionStorage.setItem('email',this.datos.email);
           sessionStorage.setItem('rol',this.datos.rol);
+          sessionStorage.setItem('address',this.datos.address);
           //this.api_mercado.setUser(this.datos.email, this.datos.rol);
           location.href = "/inicio";
         }

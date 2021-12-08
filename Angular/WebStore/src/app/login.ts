@@ -8,4 +8,5 @@ export interface LoginRes{
   email: string;
   rol: string;
   message: string;
+  address: string;
 }

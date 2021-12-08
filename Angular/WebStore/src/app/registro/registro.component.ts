@@ -21,7 +21,7 @@ export class RegistroComponent implements OnInit {
       this.api.createUser(nombre,apellido,domicilio,email,password1).subscribe((data) =>{
 
         alert(data.message);
-
+        location.href = "/login";
       });
     }
 

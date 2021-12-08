@@ -12,6 +12,7 @@ export class CarritoComponent implements OnInit {
 
   email: string | null;
   carrito: Carrito[] = [];
+  total = 0;
 
   constructor(private api: ApiMercadoService) {
     this.email = sessionStorage.getItem('email');
@@ -22,24 +23,37 @@ export class CarritoComponent implements OnInit {
   }
 
   getItems(){
-    this.api.getItems().subscribe(data => this.carrito = data);
+    this.api.getItems().subscribe(data => {
+      this.carrito = data
+      this.calcTotal(this.carrito);
+    });
   }
 
   borrarItem( id: number){
-    //alert("id"+id)
+
     var newCar: Carrito[] = [];
-    this.carrito.forEach((datos) => {
-      if(datos.id != id.toString()){
-        newCar.push(datos);
+
+    for(let i = 0; i < this.carrito.length; i++){
+      //alert("id a elminiar: "+id+", id en carrito: "+this.carrito[i].id);
+      if(this.carrito[i].id != id.toString()){
+        newCar.push(this.carrito[i]);
       }
-    });
+    }
     this.carrito = newCar;
+    this.calcTotal(this.carrito);
+  }
+
+  calcTotal(cart: Carrito[]){
+    this.total = 0;
+    this.carrito.forEach(prod => {
+      this.total = this.total + prod.quantity * prod.prize;
+    })
   }
 
   guardar(){
-    console.log(this.carrito);
+    console.log("Carrito al darle guardar"+this.carrito);
     this.api.saveCart(this.carrito).subscribe(data => {
-      console.log(data);
+
     });
     alert("Se guardaron los cambios");
   }
@@ -54,6 +68,7 @@ export class CarritoComponent implements OnInit {
       });
       this.getItems();
       alert("Compra realizada");
+      location.reload();
     }
   }
 

@@ -18,12 +18,14 @@
       <clr-dg-cell>{{ producto.quantity }}  {{ producto.medida }}</clr-dg-cell>
       <clr-dg-cell>$ {{ producto.quantity * producto.prize }} mxn</clr-dg-cell>
       <clr-dg-cell>
-        <button class="btn btn-dark" (click)="borrarItem(producto.id)">
+        <button class="btn btn-dark delete" (click)="borrarItem(producto.id)">
           <i class="bi bi-x-circle" style="font-size: 20px;"></i>
         </button>
       </clr-dg-cell>
     </clr-dg-row>
   </clr-datagrid>
+
+  <h2>Total: $ {{ total }}</h2>
 
 
 </div>

@@ -76,7 +76,8 @@ export class ApiMercadoService {
 
   buy(){
     var email = sessionStorage.getItem('email');
-    var body = { "email": email };
+    var address = sessionStorage.getItem('address');
+    var body = { "email": email, "address": address };
     console.log(body);
     return this.http.post<any>(environment.apiUrl+"carrito/buy", body);
   }
