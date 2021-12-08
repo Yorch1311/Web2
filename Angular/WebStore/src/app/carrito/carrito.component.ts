@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdCarrito } from '../prod-carrito';
+import { ApiMercadoService } from '../api-mercado.service';
+import { Carrito } from '../carrito';
 
 @Component({
   selector: 'app-carrito',
@@ -9,44 +11,51 @@ import { ProdCarrito } from '../prod-carrito';
 export class CarritoComponent implements OnInit {
 
   email: string | null;
-  constructor() {
+  carrito: Carrito[] = [];
+
+  constructor(private api: ApiMercadoService) {
     this.email = sessionStorage.getItem('email');
     if(this.email == null){
       location.href = "/";
     }
+    this.getItems();
   }
 
-  carrito : ProdCarrito[] = [
-    {
-      nombre: "Tomate",
-      precio: 500.20,
-      cantidad: 2,
-      unidad: "kilo",
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      nombre: "Escoba",
-      precio: 100.00,
-      cantidad: 5,
-      unidad: "pz",
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      nombre: "Aguacate",
-      precio: 240.20,
-      cantidad: 0.800,
-      unidad: "kilo",
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      nombre: "Calcetas",
-      precio: 20.00,
-      cantidad: 6,
-      unidad: "pz",
-      img: "https://placekitten.com/100/100"
-    },
+  getItems(){
+    this.api.getItems().subscribe(data => this.carrito = data);
+  }
 
-  ];
+  borrarItem( id: number){
+    //alert("id"+id)
+    var newCar: Carrito[] = [];
+    this.carrito.forEach((datos) => {
+      if(datos.id != id.toString()){
+        newCar.push(datos);
+      }
+    });
+    this.carrito = newCar;
+  }
+
+  guardar(){
+    console.log(this.carrito);
+    this.api.saveCart(this.carrito).subscribe(data => {
+      console.log(data);
+    });
+    alert("Se guardaron los cambios");
+  }
+
+  comprar(){
+
+    if(this.carrito.length == 0){
+      alert("No esta comprando nada.");
+    }else{
+      this.api.buy().subscribe(data => {
+        console.log(data);
+      });
+      this.getItems();
+      alert("Compra realizada");
+    }
+  }
 
   ngOnInit(): void {
   }

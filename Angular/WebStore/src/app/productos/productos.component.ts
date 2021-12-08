@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdCarrito } from '../prod-carrito';
+import { ApiMercadoService } from '../api-mercado.service';
+import { Inicio } from '../inicio';
 
 @Component({
   selector: 'app-productos',
@@ -9,7 +11,9 @@ import { ProdCarrito } from '../prod-carrito';
 export class ProductosComponent implements OnInit {
 
   email : string | null;
-  constructor() {
+  ventas: Inicio[] = [];
+
+  constructor(private api: ApiMercadoService) {
     this.email = sessionStorage.getItem('email');
     if(this.email == null){
       location.href = "/";
@@ -17,12 +21,15 @@ export class ProductosComponent implements OnInit {
   }
 
   currentDate = new Date();
-  opcion = "";
+  tipo = "";
   valor = "";
+  opcion = "";
+  x = "";
+
   mostrar = false;
 
   tipoGrafica( tipo: string){
-    this.opcion = tipo;
+    this.tipo = tipo;
     this.mostrar = false;
     this.valor = "";
   }
@@ -37,40 +44,26 @@ export class ProductosComponent implements OnInit {
     this.mostrar = false;
   }
 
-  productos : ProdCarrito[] = [
-    {
-      nombre: "Tomate",
-      precio: 500.20,
-      cantidad: 2,
-      unidad: "kilo",
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      nombre: "Escoba",
-      precio: 100.00,
-      cantidad: 5,
-      unidad: "pz",
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      nombre: "Aguacate",
-      precio: 240.20,
-      cantidad: 0.800,
-      unidad: "kilo",
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      nombre: "Calcetas",
-      precio: 20.00,
-      cantidad: 6,
-      unidad: "pz",
-      img: "https://placekitten.com/100/100"
-    },
+  venta(){
 
-  ];
+    this.titulo(this.tipo, this.valor);
 
-  generar(){
+    var body = { "tipo": this.tipo, "valor": this.valor};
+    this.api.getVentaP(body).subscribe(datos => {
+      this.ventas = datos;
+    });
     this.mostrar = true;
+  }
+
+  titulo( tipo: string, valor: string){
+    if(tipo == "month"){
+      var mes = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+      this.x = mes[parseInt(valor)-1];
+      this.opcion = "mes";
+    }else if(tipo == "year"){
+      this.opcion = "año";
+      this.x = valor;
+    }
   }
 
   ngOnInit(): void {

@@ -1,13 +1,19 @@
-.registro {
+.container {
   width: 80%;
   margin: 15px auto;
   padding: 5px;
   background-color: darkseagreen;
   color: white;
+  background-color: rgba(5, 1, 250, 0.466);
+  border-radius: 20px;
 }
 
-h2 {
-  margin: 30px;
+.container h2 {
+  width: 40%;
+  margin-left: 20px;
+  padding: 0 20px;
+  background-color: rgb(245, 237, 237);
+  border-radius: 10px;
 }
 
 .row {
@@ -19,3 +25,9 @@ h2 {
   margin: 10px auto;
   padding: 3px;
 }
+
+.registro{
+  border-radius: 20px;
+}
+
+

@@ -1,22 +1,27 @@
 <app-store-menubar></app-store-menubar>
 
-<div class="products" onload="getProducto()">
+<div class="products">
 
   <div class="container col-3" *ngFor="let producto of producto">
     <div class="datos" [id]="producto.id">
 
-      <img class="img-prod" src="{{ producto.img }}" alt="Producto">
+      <img class="img-prod" src="{{ producto.img }}" alt="Producto" width="100%">
 
-      <h3>
-        {{ producto.name }}
-      </h3>
+      <div class="main">
+        <h3> {{ producto.name }} </h3>
 
-      <p>Precio: $ {{ producto.prize }} {{ producto.medida}}</p>
+        <span>Precio: $ {{ producto.prize }} {{ producto.medida}}</span>
+        <br>
 
-      <span class="col-3">Cantidad</span>
-      <input type="number" class="col-3 cantidad" min="0" max="99" size="4">
-      <br>
-      <button class="btn btn-dark" (click)="agregarCarrito(producto.id)">Agregar</button>
+        <span class="col-3">Cantidad</span>
+
+        <input type="number" value="0" #cantidad class="col-2 cantidad form-control" min="0" max="{{ producto.quantity }}" size="4">
+
+
+        <br>
+        <button class="btn btn-dark btn-block" (click)="agregarCarrito(producto.name, producto.img, producto.id, cantidad.value, producto.prize, producto.medida)">Agregar</button>
+
+      </div>
 
     </div>
   </div>

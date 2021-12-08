@@ -6,5 +6,5 @@ export interface Inicio {
   prize: number;
   medida: string;
   estado: string;
-  descripcion: string;
+  description: string;
 }

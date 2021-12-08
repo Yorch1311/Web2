@@ -1,7 +1,12 @@
 export interface Venta {
-  nombre: string;
+  //nombre: string;
+  id: string;
   pedido: number;
   total: number;
-  fecha: string;
+  day: string;
+  month: string;
+  year: string;
+  id_venta: string;
   domicilio: string;
+  productos: [];
 }

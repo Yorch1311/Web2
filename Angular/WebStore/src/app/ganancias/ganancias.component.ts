@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { ApiMercadoService } from '../api-mercado.service';
+import { Grafica } from '../grafica';
+import { Inicio } from '../inicio';
 
 @Component({
   selector: 'app-ganancias',
@@ -10,21 +13,37 @@ import { Color, Label } from 'ng2-charts';
 export class GananciasComponent implements OnInit {
 
   email: string | null;
-  constructor() {
+  ventas: Grafica[] = [];
+
+  data: number[] = [];
+
+  constructor(private api: ApiMercadoService) {
     this.email = sessionStorage.getItem('email');
     if(this.email == null){
       location.href = "/";
     }
   }
+  tipo = "";
+  valor = "";
+
+
+
+
 //Datos de prueba para la grafica
   public lineChartData: ChartDataSets[] = [
-    { data: [1065, 590, 800, 810, 560, 550, 400], label: 'VENTAS' },
+    { data: this.data, label: 'VENTAS' },
   ];
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels: Label[] = [];
+
   public lineChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
+/*
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };*/
   public lineChartColors: Color[] = [
     {
       borderColor: 'black',
@@ -36,12 +55,10 @@ export class GananciasComponent implements OnInit {
   public lineChartPlugins = [];
 
   currentDate = new Date();
-  opcion = "";
-  valor = "";
   mostrar = false;
 
   tipoGrafica( tipo: string){
-    this.opcion = tipo;
+    this.tipo = tipo;
     this.mostrar = false;
     this.valor = "";
   }
@@ -60,10 +77,50 @@ export class GananciasComponent implements OnInit {
     this.mostrar = true;
   }
 
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
+  venta(){
+
+    //this.titulo(this.tipo, this.valor);
+
+    var body = { "tipo": this.tipo, "valor": this.valor};
+    this.api.getVentaC(body).subscribe(datos => {
+      this.ventas = datos;
+    });
+
+    var datosA = [0,0,0,0,0,0,0,0,0,0,0,0];
+    var datosM = [0,0,0,0];
+
+    if(this.tipo == "year"){
+
+      this.ventas.forEach(data => {
+        var i = data.month;
+        datosA[i-1] = datosA[i-1] + data.total;
+        console.log(datosA[i-1]);
+      });
+      this.data = datosA;
+      this.lineChartLabels = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+    }else if( this.tipo == "month"){
+
+      this.ventas.forEach(data => {
+        var i = data.day;
+        if(i < 31){
+          datosM[3] = datosM[3] + data.total;
+        }else if(i < 22){
+          datosM[2] = datosM[2] + data.total;
+        }else if(i < 15){
+          datosM[1] = datosM[1] + data.total;
+        }else if(i < 8){
+          datosM[0] = datosM[0] + data.total;
+        }
+      });
+      this.data = datosM;
+      this.lineChartLabels = ["Semana 1", "Semana ", "Semana 3", "Semana 4"];
+    }
+
+    this.mostrar = true;
+  }
+
+
 
   ngOnInit(): void {}
 }

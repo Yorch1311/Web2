@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Venta } from '../venta';
 import { ProdCarrito } from '../prod-carrito';
+import { ApiMercadoService } from '../api-mercado.service';
 
 @Component({
   selector: 'app-venta-pendiente',
@@ -10,13 +11,41 @@ import { ProdCarrito } from '../prod-carrito';
 export class VentaPendienteComponent implements OnInit {
 
   email: string | null;
-  constructor() {
+  ventas: Venta[] = [];
+  detalles: Venta | undefined;
+  productos: [] = [];
+  tabla: string = "";
+
+  constructor(private api: ApiMercadoService) {
+
     this.email = sessionStorage.getItem('email');
     if(this.email == null){
       location.href = "/";
     }
+    this.getVenta();
   }
 
+  getVenta(){
+    this.api.ventaPendiente().subscribe(venta => this.ventas = venta);
+  }
+
+  completar(id: string){
+    var body = { "id_venta": id };
+    this.api.completarVenta( body ).subscribe();
+    //alert("Venta #"+id+" completada");
+    location.reload();
+  }
+
+  info(id: string){
+    this.ventas.forEach(venta => {
+      if(venta.id_venta == id){
+        this.detalles = venta;
+        this.productos = this.detalles.productos;
+        this.tabla = "show";
+      }
+    });
+  }
+/*
   ventas: Venta[] = [
     {
     nombre: "Claudia",
@@ -72,7 +101,7 @@ export class VentaPendienteComponent implements OnInit {
     },
 
   ];
-
+*/
   ngOnInit(): void {
   }
 

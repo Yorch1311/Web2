@@ -1,9 +1,6 @@
-import { TmplAstBoundAttribute } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Producto } from '../producto';
 import { ApiMercadoService } from '../api-mercado.service';
 import { Inicio } from '../inicio';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-inicio',
@@ -15,7 +12,7 @@ export class InicioComponent implements OnInit {
   producto: Inicio[] = [];
   email: string | null;
 
-  constructor(private api_service: ApiMercadoService) {
+  constructor(private api: ApiMercadoService) {
     this.email = sessionStorage.getItem('email');
     if(this.email == null){
       location.href = "/";
@@ -25,69 +22,23 @@ export class InicioComponent implements OnInit {
   }
 
   getProducto(){
-    this.api_service.getProductos().subscribe(productos => this.producto = productos);
+    this.api.getProductos().subscribe(productos => {
+      this.producto = productos;
+      console.log(this.producto);
+      this.producto = this.producto.filter((prod) => prod.estado == "S");
+      console.log(this.producto);
+    });
   }
 
-  agregarCarrito(id: number){
+  agregarCarrito(nombre: string, img: string ,id: number, cantidad: string, precio: number, medida: string){
+
     window.alert("id:"+id);
-  }
 
-  /*productos : Producto[] = [
-    {
-      id: 1,
-      nombre: "Tomate",
-      descripcion: "De temporada",
-      cantidad: 40,
-      unidad: "kg",
-      precio: 500.20,
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      id: 2,
-      nombre: "Tomate",
-      descripcion: "De temporada",
-      cantidad: 40,
-      unidad: "kg",
-      precio: 500.20,
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      id: 3,
-      nombre: "Tomate",
-      descripcion: "De temporada",
-      cantidad: 40,
-      unidad: "kg",
-      precio: 500.20,
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      id: 4,
-      nombre: "Tomate",
-      descripcion: "De temporada",
-      cantidad: 40,
-      unidad: "kg",
-      precio: 500.20,
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      id: 5,
-      nombre: "Tomate",
-      descripcion: "De temporada",
-      cantidad: 40,
-      unidad: "kg",
-      precio: 500.20,
-      img: "https://placekitten.com/100/100"
-    },
-    {
-      id: 6,
-      nombre: "Tomate",
-      descripcion: "De temporada",
-      cantidad: 40,
-      unidad: "kg",
-      precio: 500.20,
-      img: "https://placekitten.com/100/100"
-    }
-  ];*/
+    this.api.addItem(nombre, img , id.toString(), parseFloat(cantidad), precio, medida).subscribe(data => {
+      //alert(data.message);// solo ver si funciona
+    });
+
+  }
 
   ngOnInit(): void {
   }

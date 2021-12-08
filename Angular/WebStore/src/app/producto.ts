@@ -6,4 +6,5 @@ export interface Producto {
   unidad : string;
   precio : number;
   img : string;
+  estado: string;
 }

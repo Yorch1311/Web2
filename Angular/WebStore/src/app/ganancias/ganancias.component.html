@@ -2,7 +2,7 @@
 
 <div class="container">
 
-  <div class="row">
+  <div class="row title">
     <h2>Ventas totales</h2>
   </div>
 
@@ -16,12 +16,12 @@
       <select class="form-control" #selectGrafica (change)="tipoGrafica(selectGrafica.value)"
         placeholder="TIpo de grafica">
         <option value="">Tipo...</option>
-        <option value="Mes">Mes</option>
-        <option value="Año">Año</option>
+        <option value="month">Mes</option>
+        <option value="year">Año</option>
       </select>
     </div>
 
-    <div class="col-2" *ngIf="opcion == 'Mes'">
+    <div class="col-2" *ngIf="tipo == 'month'">
 
       <select class="form-control" #selectMes (change)="mes(selectMes.value)">
         <option value="">Mes</option>
@@ -40,18 +40,19 @@
       </select>
     </div>
 
-    <div class="col-2" *ngIf="opcion == 'Año'">
+    <div class="col-2" *ngIf="tipo == 'year'">
       <input class="form-control" type="number" min="2000" max="{{ currentDate | date: 'y' }}" placeholder="Año"
         #selectAnio (change)="anio(selectAnio.value)">
     </div>
 
     <div class="col-3" *ngIf="valor != ''">
-      <button class="botones btn btn-dark" (click)="generar()">Generar</button>
+      <button class="botones btn btn-dark" (click)="venta()">Generar</button>
     </div>
 
   </div>
-
+  <br>
 </div>
+
 
 <div class="container" *ngIf="mostrar == true">
   <div class="row">

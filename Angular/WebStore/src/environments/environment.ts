@@ -5,9 +5,7 @@
 export const environment = {
   production: false,
   //apiUrl: "localhost:3000/api/"
-  apiUrl: "https://api-mercado-402.herokuapp.com/api/",
-  email: "",
-  rol: ""
+  apiUrl: "https://api-mercado-402.herokuapp.com/api/"
 };
 
 /*
