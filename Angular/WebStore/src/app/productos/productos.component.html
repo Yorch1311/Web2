@@ -1,0 +1,73 @@
+<app-store-menubar></app-store-menubar>
+
+<div class="container main">
+
+  <div class="row title">
+    <h2>Ventas de los productos</h2>
+  </div>
+
+  <div class="row">
+
+    <div class="col-3">
+      <label>Escoja el tipo de grafica:</label>
+    </div>
+
+    <div class="col-2">
+      <select class="form-control" #selectGrafica (change)="tipoGrafica(selectGrafica.value)" placeholder="TIpo de grafica">
+        <option value="">Tipo...</option>
+        <option value="month">Mes</option>
+        <option value="year">Año</option>
+      </select>
+    </div>
+
+    <div class="col-2" *ngIf="tipo == 'month'">
+
+      <select class="form-control" #selectMes (change)="mes(selectMes.value)">
+        <option value="">Mes</option>
+        <option value="1">Enero</option>
+        <option value="2">Febrero</option>
+        <option value="3">Marzo</option>
+        <option value="4">Abril</option>
+        <option value="5">Mayo</option>
+        <option value="6">Junio</option>
+        <option value="7">Julio</option>
+        <option value="8">Agosto</option>
+        <option value="9">Septiembre</option>
+        <option value="10">Octubre</option>
+        <option value="11">Noviembre</option>
+        <option value="12">Diciembre</option>
+      </select>
+    </div>
+
+    <div class="col-2" *ngIf="tipo == 'year'">
+      <input class="form-control" type="number" min="2000" max="{{ currentDate | date: 'y' }}"
+        placeholder="Año" #selectAnio (change)="anio(selectAnio.value)">
+    </div>
+
+    <div class="col-3" *ngIf="valor != ''">
+      <button class="botones btn btn-dark" (click)="venta()">Generar</button>
+    </div>
+
+  </div>
+  <div class="container grafica" *ngIf="mostrar == true">
+    <h2>Productos vendidos el {{ opcion }} de {{ x }}.</h2>
+    <clr-datagrid >
+      <clr-dg-column [clrDgField]="'img'">Imagen</clr-dg-column>
+      <clr-dg-column [clrDgField]="'nombre'">Nombre</clr-dg-column>
+      <clr-dg-column [clrDgField]="'precio'" clrDgColType="number">Precio</clr-dg-column>
+      <clr-dg-column [clrDgField]="'cantidad'" clrDgColType="number">Cantidad</clr-dg-column>
+      <clr-dg-column [clrDgField]="'total'" clrDgColType="number">Total</clr-dg-column>
+      <clr-dg-row *clrDgItems="let prodcarrito of ventas">
+        <clr-dg-cell>
+          <img src="{{ prodcarrito.img }}" alt="Imagen de {{ prodcarrito.name }}" width="100px">
+        </clr-dg-cell>
+        <clr-dg-cell>{{ prodcarrito.name }}</clr-dg-cell>
+        <clr-dg-cell>$ {{ prodcarrito.prize }} mxn</clr-dg-cell>
+        <clr-dg-cell>{{ prodcarrito.quantity }} {{ prodcarrito.medida }}</clr-dg-cell>
+        <clr-dg-cell>$ {{ prodcarrito.quantity * prodcarrito.prize }} mxn</clr-dg-cell>
+      </clr-dg-row>
+
+    </clr-datagrid>
+  </div>
+  <br>
+</div>

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <ul class="navbar-nav me-auto" *ngIf="rol == 'administrador'">
+      <li class="nav-item">
+        <a href="/abc-productos" router-link="/abc-productos" (click)="posicion('abc')" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-plus-circle" style="font-size: 30px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/producto" router-link="/producto" (click)="posicion('producto')" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-currency-dollar" style="font-size: 30px"></i>
+        </a>
+
+      </li>
+      <li class="nav-item">
+        <a href="/ganancia" router-link="/ganancia" (click)="posicion('ganancia')" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-graph-up-arrow" style="font-size: 30px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/venta" router-link="/venta" (click)="posicion('venta')" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-bag" style="font-size: 30px"></i>
+        </a>
+      </li>
+
+    </ul>
+
+    <ul class="navbar-nav ms-auto">
+      <input *ngIf="lugar == 'inicio' || lugar == null" class="form-control mr-sm-2" type="search" placeholder="Buscar" #buscar (change)="serch(buscar.value)">
+      <li class="nav-item">
+        <a href="/inicio" router-link="/inicio" (click)="posicion('inicio')" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-house" style="font-size: 30px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/carrito" router-link="/carrito" (click)="posicion('carrito')" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-cart3" style="font-size: 30px;"></i>
+        </a>
+
+      </li>
+      <li class="nav-item">
+        <a href="/cuenta" router-link="/cuenta" (click)="posicion('cuenta')" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-person-circle" style="font-size: 30px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a (click)="salir()" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-door-open-fill" style="font-size: 30px"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

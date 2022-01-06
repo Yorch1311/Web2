@@ -1,0 +1,55 @@
+<app-store-menubar></app-store-menubar>
+
+<div class="container main">
+  <br>
+  <h2>Tabla de ventas pendientes</h2>
+
+  <clr-datagrid class="tabla">
+    <clr-dg-column [clrDgField]="'nombre'">Usuario</clr-dg-column>
+    <clr-dg-column [clrDgField]="'pedido'">No.Pedido</clr-dg-column>
+    <clr-dg-column [clrDgField]="'total'" clrDgColType="number">Total</clr-dg-column>
+    <clr-dg-column [clrDgField]="'fecha'">fecha</clr-dg-column>
+    <clr-dg-column [clrDgField]="'domicilio'">Domicilio</clr-dg-column>
+    <clr-dg-column>Completar</clr-dg-column>
+    <clr-dg-column>Detalles</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let venta of ventas">
+      <clr-dg-cell>{{ venta.id }}</clr-dg-cell>
+      <clr-dg-cell>{{ venta.id_venta }}</clr-dg-cell>
+      <clr-dg-cell>$ {{ venta.total }} </clr-dg-cell>
+      <clr-dg-cell>{{ venta.day }}/{{ venta.month }}/{{ venta.year }}</clr-dg-cell>
+      <clr-dg-cell>{{ venta.address}} </clr-dg-cell>
+      <clr-dg-cell>
+        <button class="botones btn btn-dark check" (click)="completar(venta.id_venta)">
+          <i class="bi bi-check-circle"></i>
+        </button>
+      </clr-dg-cell>
+      <clr-dg-cell>
+        <button class="botones btn btn-dark info" (click)="info(venta.id_venta)">
+          <i class="bi bi-info-circle"></i>
+        </button>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+  </clr-datagrid>
+  <br>
+  <div class="container" *ngIf="tabla=='show'">
+    <h2>Pedido #{{ detalles?.id_venta }}</h2>
+
+    <clr-datagrid>
+      <clr-dg-column [clrDgField]="'nombre'">Producto</clr-dg-column>
+      <clr-dg-column [clrDgField]="'cantidad'" clrDgColType="number">Cantidad</clr-dg-column>
+      <clr-dg-column [clrDgField]="'precio'" clrDgColType="number">Precio</clr-dg-column>
+      <clr-dg-column [clrDgField]="'total'" clrDgColType="number">Total</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let producto of productos">
+        <clr-dg-cell>{{ producto.name }}</clr-dg-cell>
+        <clr-dg-cell>{{ producto.quantity }} {{ producto.medida }}</clr-dg-cell>
+        <clr-dg-cell>$ {{ producto.prize }} </clr-dg-cell>
+        <clr-dg-cell>$ {{ producto.quantity * producto.prize }}</clr-dg-cell>
+      </clr-dg-row>
+
+    </clr-datagrid>
+  </div>
+  <br>
+</div>

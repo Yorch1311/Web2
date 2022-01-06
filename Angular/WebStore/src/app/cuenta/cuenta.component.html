@@ -1,0 +1,41 @@
+<app-store-menubar></app-store-menubar>
+
+<div class="container">
+
+  <div class="row">
+    <h2>Datos de la Cuenta</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <input type="text" #name class="form-control" placeholder="Nombre" value="{{ usuario?.name }}">
+    </div>
+    <div class="col-8">
+      <input type="text" #surname class="form-control" placeholder="Apellido(s)" value="{{ usuario?.surname }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <input type="text" #address class="form-control" placeholder="Domicilio" value="{{ usuario?.address }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <input type="text" #email readonly class="form-control" placeholder="ejemplo@gmail.com" value="{{ usuario?.email }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <input type="password" #pass1 class="form-control" placeholder="Contraseña" value="{{ usuario?.password }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <input type="password" #pass2 class="form-control" placeholder="Confirmar contraseña" value="{{ usuario?.password }}">
+    </div>
+  </div>
+  <div class="row">
+    <button class="botones btn btn-dark" (click)="saveUser( name.value, surname.value, address.value, email.value, pass1.value, pass2.value )">Guardar</button>
+    <button class="botones btn btn-dark" (click)="back()">Cancelar</button>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<app-store-menubar></app-store-menubar>
+
+<div class="container">
+
+  <div class="row title">
+    <h2>Ventas totales</h2>
+  </div>
+
+  <div class="row">
+
+    <div class="col-3">
+      <label>Escoja el tipo de grafica:</label>
+    </div>
+
+    <div class="col-2">
+      <select class="form-control" #selectGrafica (change)="tipoGrafica(selectGrafica.value)"
+        placeholder="TIpo de grafica">
+        <option value="">Tipo...</option>
+        <option value="month">Mes</option>
+        <option value="year">Año</option>
+      </select>
+    </div>
+
+    <div class="col-2" *ngIf="tipo == 'month'">
+
+      <select class="form-control" #selectMes (change)="mes(selectMes.value)">
+        <option value="">Mes</option>
+        <option value="1">Enero</option>
+        <option value="2">Febrero</option>
+        <option value="3">Marzo</option>
+        <option value="4">Abril</option>
+        <option value="5">Mayo</option>
+        <option value="6">Junio</option>
+        <option value="7">Julio</option>
+        <option value="8">Agosto</option>
+        <option value="9">Septiembre</option>
+        <option value="10">Octubre</option>
+        <option value="11">Noviembre</option>
+        <option value="12">Diciembre</option>
+      </select>
+    </div>
+
+    <div class="col-2" *ngIf="tipo == 'year'">
+      <input class="form-control" type="number" min="2000" max="{{ currentDate | date: 'y' }}" placeholder="Año"
+        #selectAnio (change)="anio(selectAnio.value)">
+    </div>
+
+    <div class="col-3" *ngIf="valor != ''">
+      <button class="botones btn btn-dark" (click)="venta()">Generar</button>
+    </div>
+
+  </div>
+  <br>
+</div>
+
+
+<div class="container" *ngIf="mostrar == true">
+  <div class="row">
+    <div class="col-8">
+      <div style="display: block;">
+        <canvas baseChart width="400" height="400"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="'line'"
+          [plugins]="lineChartPlugins">
+        </canvas>
+      </div>
+
+    </div>
+  </div>
+</div>

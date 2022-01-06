@@ -1,0 +1,30 @@
+.botones {
+  width: 20%;
+  margin: 15px;
+  padding: 3px;
+}
+
+.tabla{
+  max-height: 450px;
+}
+
+.container {
+  height: 500px;
+  background-color: rgba(5, 1, 250, 0.466);
+  border-radius: 20px;
+}
+
+.delete{
+  background-color: red;
+}
+
+.container h2{
+  width: 20%;
+  margin: 10px;
+  padding: 0 20px;
+  background-color: rgb(245, 237, 237);
+  border-radius: 10px;
+  display: block;
+  float: right;
+
+}

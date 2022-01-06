@@ -1,0 +1,6 @@
+prime
+primeicons
+bootstrap
+chart.js
+n2-charts
+popper.js
